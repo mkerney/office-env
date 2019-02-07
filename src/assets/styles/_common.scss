@@ -1,13 +1,342 @@
+@import 'node_modules/bootstrap/scss/bootstrap';
+
+*,*:focus{
+    outline: none !important;
+    box-shadow: none !important;
+}
 body {
-    margin: 0;
-    padding: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-        "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-        sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    font-family  : $ptsans;
+    @extend .ptsans-regular;
+}
+.ptsans-regular{
+    font-weight: 400;
+}
+.ptsans-bold{
+    font-weight: 700;
+}
+strong, b{
+    font-weight: 700 !important;
+}
+.btn{
+    &:focus{
+        @include box-shadow(none);
+    }
 }
 
-code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",monospace;
+input[type="checkbox"]{
+    cursor: pointer;
+}
+
+.form-group, .form-check{
+    position: relative;
+    .error-input-msg{
+        left: 0;
+        width: 100%;
+        color: red;
+        display: block;
+        overflow: hidden;
+        position: absolute;
+        font-size: 12px;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+}
+
+/*--  Custom Checkbox Styles  --*/
+.custom-check{
+    margin-bottom: 5px;
+    label{
+        &.checkbox-inline{
+            input[type="checkbox"]{
+                display:none;
+                &:checked {
+                    +  span{
+                        border          : 1px solid $black;
+                        padding         : 3px;
+                        background-color: $white;
+                        @include border-radius(0);
+                        @include transition(all 0.3s ease-in-out);
+                        i{
+                            opacity: 1;
+                        }
+                    }
+                }
+                + span{
+                    width           : 18px;
+                    border          : 1px solid $custom-check-border;
+                    cursor          : pointer;
+                    height          : 18px;
+                    margin          : -1px 10px 0 0;
+                    display         : inline-block;
+                    padding         : 3px;
+                    position        : relative;
+                    text-align      : center;
+                    line-height     : 14px;
+                    margin-right    : 10px;
+                    vertical-align  : middle;
+                    background-color: $white;
+                    @include border-radius(0);
+                    @include transition(all 0.3s ease-in-out);
+                    i{
+                        top        : 2px;
+                        left       : -1px;
+                        color      : $black;
+                        width      : 10px;
+                        margin     : -4px auto;
+                        display    : block;
+                        opacity    : 0;
+                        overflow   : visible;
+                        position   : relative;
+                        font-size  : 10px;
+                        font-weight: 400;
+                        @include transition(all 0.3s ease-in-out);
+                    }
+                }
+            }
+        }
+    }
+    .checkbox-inline{
+        padding-left: 0;
+    }
+} 
+
+.btn-black{
+    color           : $white;
+    border          : 1px solid $white;
+    padding         : 15px 30px;
+    min-width       : 200px;
+    font-size       : 14px;
+    text-align      : center;
+    line-height     : 16px;
+    letter-spacing  : 1px;
+    text-transform  : uppercase;
+    text-decoration : none; 
+    background-color: $black;
+    @include border-radius(0);
+    &:hover{
+        color           : $white;
+        border-color    : $white;
+        text-decoration : none; 
+        background-color: $black;
+    }
+    &:focus{
+        color           : $white;
+        border-color    : $white;
+        background-color: $black;
+    &:active{
+        color           : $white;
+        border-color    : $white;
+        background-color: $black;
+    }
+    }
+    &[disabled], &.btn-default[disabled]{
+        pointer-events  : none;
+        background-color: $gray;
+        &:hover, &:active, &:focus{
+            pointer-events  : none;
+            background-color: $gray;
+        }
+    }
+}
+
+
+
+.btn-theme-blue{
+    color           : $white;
+    border          : 0;
+    padding         : 13px 25px;
+    font-size       : 14px;
+    line-height     : 19px;	
+    background-color: $theme-blue-btn;
+    @extend .text-center;
+    @extend .ptsans-bold;
+    @include border-radius(3px);
+    &:hover, 
+    &:active, 
+    &:focus:active, 
+    &:focus:hover, 
+    &:not(:disabled):not(.disabled):active,
+    &:not(:disabled):not(.disabled):active:focus{
+        color           : $white;
+        background-color: $theme-blue-btn;
+        @include box-shadow(none);
+    }
+    &:hover{
+        @include box-shadow(inset 0 2px 3px 0 rgba(0,0,0,0.5));
+    }
+    &[disabled], &:disabled, &.disabled{
+        color           : $white;
+        opacity         : 0.5;
+        cursor          : not-allowed;
+        background-color: $theme-blue-btn;
+    }
+}
+
+
+
+.btn-theme-dark{
+    color           : $white;
+    padding         : 9px 25px;
+    opacity         : 0.6;	
+    font-size       : 14px;	
+    line-height     : 20px;
+    background-color: $theme-dark-btn;
+    @extend .text-center;
+    @extend .ptsans-bold;
+    @include border-radius(3px);
+}
+
+
+
+.btn-theme-transparent{
+    color           : $white;
+    padding         : 9px 25px;
+    font-size       : 14px;	
+    line-height     : 20px;
+    background-color: transparent;
+    border: 1px solid $theme-border-color;
+    @extend .text-center;
+    @extend .ptsans-bold;
+    @include border-radius(3px);
+}
+
+
+.form-input-theme{
+    width           : 100%;
+    color           : $theme-dark-btn;
+    border          : 1px solid $form-border;  
+    padding         : 12px 15px;
+    font-size       : 14px;
+    line-height     : 19px;
+    background-color: $white;
+    @include border-radius(3px);
+    @include box-shadow(inset 0 4px 4px -4px $placeholder-color);
+    &.select-input-theme{
+        height: 45px !important;
+        z-index: 1;
+        position: relative;
+        background-color: transparent;
+        @include appearance(none);
+    }
+    &:focus{
+        border-color: $form-border;
+        @include box-shadow(none !important);
+    }
+}
+
+
+.form-label-theme{
+    color      : $theme-border-color;
+    width      : 100%;
+    margin     : 0;
+    font-size  : 14px;
+    line-height: 27px;
+}
+
+.custom-fontawesome{
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing : antialiased;
+    display                : inline-block;
+    font-style             : normal;
+    font-variant           : normal;
+    text-rendering         : auto;
+    line-height            : 1;
+    font-family            : "Font Awesome\ 5 Free";
+}
+
+.text-ellipsis{
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+
+/* Slides Move Animation */
+@-webkit-keyframes slides-move{
+    0%{
+        opacity: 0;
+        @include transform(translate(0, 0) scale(0));
+    }
+    25%{
+        opacity: 0.5;
+        @include transform(translate(-200px, 200px) scale(0.5));
+    }
+}
+
+@keyframes slides-move{
+    0%{
+        opacity: 0;
+        @include transform(translate(0, 0) scale(0));
+    }
+    25%{
+        opacity: 0.5;
+        @include transform(translate(-200px, 200px) scale(0.5));
+    }
+}
+
+.slides-move {
+    -webkit-animation-name: slides-move;
+    -moz-animation-name: slides-move;
+    animation-name: slides-move;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+}
+
+
+
+/* Badge Animation */
+@-webkit-keyframes badge-animate {
+    from {
+        @include transform(scale3d(1, 1, 1));
+    }
+
+    10%, 20% {
+        @include transform(scale3d(.9, .9, .9) rotate3d(0, 0, 1, -3deg));
+    }
+
+    30%, 50%, 70%, 90% {
+        @include transform(scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg));
+    }
+
+    40%, 60%, 80% {
+        @include transform(scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg));
+    }
+
+    to {
+        @include transform(scale3d(1, 1, 1));
+    }
+}
+
+
+@keyframes badge-animate {
+    from {
+        @include transform(scale3d(1, 1, 1));
+    }
+
+    10%, 20% {
+        @include transform(scale3d(.9, .9, .9) rotate3d(0, 0, 1, -3deg));
+    }
+
+    30%, 50%, 70%, 90% {
+        @include transform(scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg));
+    }
+
+    40%, 60%, 80% {
+        @include transform(scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg));
+    }
+
+    to {
+        @include transform(scale3d(1, 1, 1));
+    }
+}
+
+.badge-animate {
+    -webkit-animation-name: badge-animate;
+    -moz-animation-name: badge-name;
+    animation-name: badge-animate;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
 }

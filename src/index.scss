@@ -1,2 +1,9 @@
+/*   common styles   */
+@import './assets/styles/_fonts.scss';
+@import './assets/styles/_mixins.scss';
+@import './assets/styles/_color.scss';
 @import './assets/styles/_common.scss';
-@import './components/login/_login.scss';
+
+/*   component styles Authenication    */
+@import './components/authenication/_authenication.scss';
+@import './components/authenication/login/_login.scss';
