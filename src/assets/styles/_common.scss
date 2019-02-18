@@ -23,6 +23,10 @@ strong, b{
     }
 }
 
+.field-mandatory{
+    color: $error-msg;
+}
+
 input[type="checkbox"]{
     cursor: pointer;
 }
@@ -205,17 +209,23 @@ input[type="checkbox"]{
     width           : 100%;
     color           : $theme-dark-btn;
     border          : 1px solid $form-border;  
-    padding         : 12px 15px;
+    height          : 38px;
+    padding         : 0 15px;
     font-size       : 14px;
-    line-height     : 19px;
     background-color: $white;
     @include border-radius(3px);
     @include box-shadow(inset 0 4px 4px -4px $placeholder-color);
+    @extend .d-flex;
+    @extend .align-items-center;
     &.select-input-theme{
-        height: 45px !important;
+        cursor: pointer;
         z-index: 1;
         position: relative;
-        background-color: transparent;
+        @include appearance(none);
+    }
+    &.textarea-input-theme{
+        resize: none;
+        height: 100px;
         @include appearance(none);
     }
     &:focus{

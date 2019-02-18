@@ -3,7 +3,7 @@
     min-height      : 100vh;
     background-color: $authenication-bg;
     .authenication-content{
-        height  : 100vh; 
+        min-height  : 100vh; 
         .auth-leftsection{
             width   : 36.5635%;
             .authenication-img{
