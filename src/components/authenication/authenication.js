@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Signin from './login/login';
 import Signup from './signup/signup';
 import MainLogo from '../../assets/images/main-logo.png';
@@ -14,8 +15,12 @@ export default class authenication extends Component {
                     </div>
                     <div className="auth-rightsection d-flex align-items-center">
                         <section className="auth-content-wrapper">
-                            {/* <Signin/> */}
-                            <Signup/>
+                            <BrowserRouter>
+                                <Switch>
+                                    <Route path="/" component={Signin} exact />
+                                    <Route path="/auth/sign-up" component={Signup} exact />
+                                </Switch>
+                            </BrowserRouter>
                         </section>
                     </div>
                 </div>

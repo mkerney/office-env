@@ -24,7 +24,7 @@ export default class Login extends Component {
                             Sign In
                         </Button>
                         <span className="d-block text-center">
-                            Don’t have an account? <a className="dont-have-account d-inline-block" href="javascript:void(0);">Sign up.</a>
+                            Don’t have an account? <Link className="dont-have-account d-inline-block" to={'/auth/sign-up'}>Sign up.</Link>
                         </span>    
                     </div>
                 </Form>

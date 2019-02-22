@@ -49,7 +49,7 @@ export default class Signup extends Component {
                     <div className="dont-have-account-wrapper d-flex align-items-center justify-content-between">
                         <Button className="btn-theme-blue">Sign Up</Button>
                         <span className="d-block text-center">
-                            Already have an account? <a className="dont-have-account d-inline-block" href="javascript:void(0);">Sign In</a>
+                            Already have an account? <Link className="dont-have-account d-inline-block" to={'/'}>Sign In</Link>
                         </span>    
                     </div>
                 </Form>

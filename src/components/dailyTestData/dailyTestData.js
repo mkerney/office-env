@@ -84,7 +84,7 @@ export default class dailyTestData extends Component {
                             </FormGroup>
                             <FormGroup>
                                 <Label className="form-label-theme" for="comments">Comments</Label>
-                                <Input className="form-input-theme textarea-input-theme" type="textarea" name="comments" id="comments" />
+                                <Input className="form-input-theme textarea-input-theme" placeholder="Comment here" type="textarea" name="comments" id="comments" />
                                 {/* {this.props.confirmPassword.showError ? <span className="error-input-msg">{this.props.confirmPassword.error}</span> : null}                    */}
                             </FormGroup>
                             <div className="dont-have-account-wrapper d-flex align-items-center justify-content-between">
