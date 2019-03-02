@@ -9,8 +9,7 @@ const signInForm = {
         showError : false,
         error : '',
     },
-    isValidate : false,
-    keepLoggedIn : false,
+    isValidate : false
 }
 
 export default signInForm

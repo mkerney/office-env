@@ -13,22 +13,27 @@ export default class Signup extends Component {
                         <h4 className="text-center">Sign Up</h4>
                     </div>
                     <FormGroup>
-                        <Label className="form-label-theme" for="signUpName">Full Name</Label>
-                        <Input className="form-input-theme" type="text" name="signUpName" id="signUpName"  />
+                        <Label className="form-label-theme" for="signUpFirstName">First Name<span class="field-mandatory">*</span></Label>
+                        <Input className="form-input-theme" type="text" name="signUpFirstName" id="signUpFirstName"  />
                         {/* {this.props.name.showError ? <span className="error-input-msg">{this.props.name.error}</span> : null} */}
                     </FormGroup>
                     <FormGroup>
-                        <Label className="form-label-theme" for="signUpEmail">User ID</Label>
-                        <Input className="form-input-theme" type="text" name="signUpEmail" id="signUpEmail" />
-                        {/* {this.props.email.showError ? <span className="error-input-msg">{this.props.email.error}</span> : null}               */}
+                        <Label className="form-label-theme" for="signUpMiddleName">Middle Name</Label>
+                        <Input className="form-input-theme" type="text" name="signUpMiddleName" id="signUpMiddleName"  />
+                        {/* {this.props.name.showError ? <span className="error-input-msg">{this.props.name.error}</span> : null} */}
                     </FormGroup>
                     <FormGroup>
-                        <Label className="form-label-theme" for="signUpPwd">Password</Label>
+                        <Label className="form-label-theme" for="signUpLastName">Last Name<span class="field-mandatory">*</span></Label>
+                        <Input className="form-input-theme" type="text" name="signUpLastName" id="signUpLastName"  />
+                        {/* {this.props.name.showError ? <span className="error-input-msg">{this.props.name.error}</span> : null} */}
+                    </FormGroup>
+                    <FormGroup>
+                        <Label className="form-label-theme" for="signUpPwd">Password<span class="field-mandatory">*</span></Label>
                         <Input className="form-input-theme" type="password" name="signUpPwd" id="signUpPwd" />
                         {/* {this.props.password.showError ? <span className="error-input-msg">{this.props.password.error}</span> : null}                   */}
                     </FormGroup>
                     <FormGroup>
-                        <Label className="form-label-theme" for="signUpRepeatPwd">Repeat password</Label>
+                        <Label className="form-label-theme" for="signUpRepeatPwd">Repeat password<span class="field-mandatory">*</span></Label>
                         <Input className="form-input-theme" type="password" name="signUpRepeatPwd" id="signUpRepeatPwd" />
                         {/* {this.props.confirmPassword.showError ? <span className="error-input-msg">{this.props.confirmPassword.error}</span> : null}                    */}
                     </FormGroup>
@@ -41,7 +46,7 @@ export default class Signup extends Component {
                                 </i>
                             </span> 
                             <small>
-                                I agree to the site's Terms & Conditions
+                                I agree to the site's Terms & Conditions<span class="field-mandatory">*</span>
                             </small>
                         </Label>
                         {/* {this.props.tncChecked.showError ? <span className="error-input-msg">{this.props.tncChecked.error}</span> : null}                    */}

@@ -20,38 +20,15 @@ axiosInstance.interceptors.request.use(config => {
         }
     }
 
-    if(config.data){
-        currentForm = config.data.currentForm;
-    }
-
     return config
 })
 
 axiosInstance.interceptors.response.use((response) => {
-    if(response.data.error){
-        store.dispatch({ type: "CLEAR_LOADING_FORM_STATES"})
-        store.dispatch({ type: `RESET_VALIDATION_${currentForm}_FORM`})
-        return store.dispatch({ type: "ERROR", val: response.data.error })
-    }
-    else{
-        if(currentForm){
-            store.dispatch({ type: "CLEAR_LOADING_FORM_STATES"})
-            store.dispatch({ type: `RESET_VALIDATION_${currentForm}_FORM`})
-            currentForm = ''
-        }
-        return response
-    }
+    return response
 },
 (error) => {
-    if(error){
-        store.dispatch({ type: "ERROR", val: 'Something went wrong, Please try again' })
-        store.dispatch({ type: "CLEAR_LOADING_FORM_STATES"})
-        store.dispatch({ type: `RESET_VALIDATION_${currentForm}_FORM`})
-        currentForm = ''
-    }
-    else {
-        return Promise.reject(error)
-    }
+    console.log(error)
+    return error
 })
 
 export default axiosInstance

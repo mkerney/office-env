@@ -15,12 +15,10 @@ export default class authenication extends Component {
                     </div>
                     <div className="auth-rightsection d-flex align-items-center">
                         <section className="auth-content-wrapper">
-                            <BrowserRouter>
-                                <Switch>
-                                    <Route path="/" component={Signin} exact />
-                                    <Route path="/auth/sign-up" component={Signup} exact />
-                                </Switch>
-                            </BrowserRouter>
+                            <Switch>
+                                <Route path="/auth/sign-up" component={Signup} />
+                                <Route path="/" component={Signin} />
+                            </Switch>
                         </section>
                     </div>
                 </div>

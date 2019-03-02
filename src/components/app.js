@@ -9,7 +9,7 @@ export default class App extends Component {
 			<BrowserRouter>
 				<Switch>
 					<Route path="/test-data" component={DailyTestData} exact />
-					<Route path="/" component={Authenication} exact />
+					<Route path="/" component={Authenication} />
 				</Switch>
 			</BrowserRouter>
 			

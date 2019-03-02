@@ -34,7 +34,6 @@ const mapDispatchToProps = dispatch => {
             
             dispatch({type : "SUBMIT_SIGNIN"})
         },
-        setKeepLoggedIn: input => dispatch({ type: "SET_SIGNIN_KEEP_LOGGED", val: input.target.checked }),
         toggleSignInLoading: (val = true) => dispatch({ type: "TOGGLE_SIGN_IN_FORM_LOADING", val})
     }
 }

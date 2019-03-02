@@ -1,9 +1,6 @@
 const authStoreObject = {
-    isPro : false
-    , isSignedIn : false
-    , facebookId : ''
+    isSignedIn : false
     , id : 0
-    , isFacebookLogin: false
 
 }
 
