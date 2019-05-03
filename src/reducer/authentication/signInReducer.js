@@ -2,7 +2,6 @@ import submitForm from "../../validations/submitForm";
 import initialState from "../../states/authentication/signIn";
 import validateEmail from "../../validations/email";
 import validateRequired from "../../validations/requiredValidation";
-import validatePassword from "../../validations/password";
 
 
 const signInReducer = (state = initialState, actions) => {
@@ -21,6 +20,26 @@ const signInReducer = (state = initialState, actions) => {
         return {
             ...initialState
         }
+
+        case 'SET_EMAIL_SERVER_ERROR':
+            return {
+                ...state,
+                email: {
+                    ...state.email,
+                    showError: true,
+                    error: actions.payload.value
+                }
+            }
+
+        case 'SET_PASSWORD_SERVER_ERROR':
+            return {
+                ...state,
+                password: {
+                    ...state.password,
+                    showError: true,
+                    error: actions.payload.value
+                }
+            }
 
         
         case "SET_SIGNIN_PASSWORD" : 
@@ -65,9 +84,13 @@ const signInReducer = (state = initialState, actions) => {
             isValidate: false
         }
 
+        default:
+            return {
+                ...state
+            }
+
     }
 
-    return state;
 };
 
 export default signInReducer

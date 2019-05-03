@@ -1,23 +1,19 @@
 import axios from "axios";
-import store from "../store";
-import { Cookies } from "react-cookie";
 require('dotenv').config()
 
-const cookie = new Cookies()
 
 const axiosInstance = axios.create({
-    baseURL : 'http://localhost:3002/api'
+    baseURL : 'http://localhost:3001/api'
     ,withCredentials : true
 })
 
-let currentForm;
 
 axiosInstance.interceptors.request.use(config => {
-    const token = cookie.get('token');
+    const token = localStorage.getItem('token')
 
     if(token){
         config.headers = {
-            AuthToken: `token=${token}`
+            token
         }
     }
 

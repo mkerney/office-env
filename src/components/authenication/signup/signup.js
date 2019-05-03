@@ -8,7 +8,7 @@ export default class Signup extends Component {
     constructor(props){
         super(props)
         this.setFirstName = this.setFirstName.bind(this)
-        this.setMiddleName = this.setMiddleName.bind(this)
+        this.setEmail = this.setEmail.bind(this)
         this.setLastName = this.setLastName.bind(this)
         this.setPassword = this.setPassword.bind(this)
         this.setConfirmPassword = this.setConfirmPassword.bind(this)
@@ -20,8 +20,8 @@ export default class Signup extends Component {
         this.props.setFirstName(e.target.value)
     }
 
-    setMiddleName(e){
-        this.props.setMiddleName(e.target.value)
+    setEmail(e){
+        this.props.setEmail(e.target.value)
     }
 
     setLastName(e){
@@ -58,13 +58,14 @@ export default class Signup extends Component {
                         {this.props.firstName.showError ? <span className="error-input-msg">{this.props.firstName.error}</span> : null}
                     </FormGroup>
                     <FormGroup>
-                        <Label className="form-label-theme" for="signUpMiddleName">Middle Name</Label>
-                        <Input className="form-input-theme" type="text" name="signUpMiddleName" id="signUpMiddleName" placeholder="Enter Middle Name" onChange={this.setMiddleName} />
-                    </FormGroup>
-                    <FormGroup>
                         <Label className="form-label-theme" for="signUpLastName">Last Name<span class="field-mandatory"> *</span></Label>
                         <Input className="form-input-theme" type="text" name="signUpLastName" id="signUpLastName" placeholder="Enter Last Name"  onChange={this.setLastName} />
                         {this.props.lastName.showError ? <span className="error-input-msg">{this.props.lastName.error}</span> : null}
+                    </FormGroup>
+                    <FormGroup>
+                        <Label className="form-label-theme" for="signUpEmail">Email<span class="field-mandatory"> *</span></Label>
+                        <Input className="form-input-theme" type="text" name="signUpMiddleName" id="signUpMiddleName" placeholder="Enter Email" onChange={this.setEmail} />
+                        {this.props.email.showError ? <span className="error-input-msg">{this.props.email.error}</span> : null}
                     </FormGroup>
                     <FormGroup>
                         <Label className="form-label-theme" for="signUpPwd">Password<span class="field-mandatory"> *</span></Label>
@@ -97,6 +98,7 @@ export default class Signup extends Component {
                         </span>    
                     </div>
                 </Form>
+                {this.props.isSignedUp ? <Redirect push to="/" /> : null}
             </div>
         );
     }

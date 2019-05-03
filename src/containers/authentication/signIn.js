@@ -18,18 +18,33 @@ const mapDispatchToProps = dispatch => {
         setPassword: value => dispatch({ type: "SET_SIGNIN_PASSWORD", val: value }),
         submit: () => {
             dispatch(async (dispatch, getStates) => {
-                dispatch({ type: "VALIDATE_SIGNIN_FIELDS" });
-                dispatch({ type: "VALIDATE_SIGNIN_FORM" })
-                const newStates = getStates().signInForm
-                if(newStates.isValidate){
-                    const signInResponse = await signIn({
-                        username: newStates.email.value,
-                        password: newStates.password.value
-                    })
+                try {
+                    dispatch({ type: "VALIDATE_SIGNIN_FIELDS" });
+                    dispatch({ type: "VALIDATE_SIGNIN_FORM" })
+                    const newStates = getStates().signInForm
+                    if (newStates.isValidate) {
+                        const response = await signIn({
+                            username: newStates.email.value,
+                            password: newStates.password.value
+                        })
+                        if (response.data.error && response.data.error.source) {
+                            dispatch({
+                                type: `SET_${response.data.error.source.toUpperCase()}_SERVER_ERROR`,
+                                payload: {
+                                    value: response.data.error.message
+                                }
+                            })
+                        } else {
+                            dispatch({ type: 'LOGIN' })
+                            localStorage.setItem('token', response.data.token)
+                        }
+                    }
+                } catch (error) {
+                    console.log(error);
                 }
             })
         },
-        toggleSignInLoading: (val = true) => dispatch({ type: "TOGGLE_SIGN_IN_FORM_LOADING", val})
+        toggleSignInLoading: (val = true) => dispatch({ type: "TOGGLE_SIGN_IN_FORM_LOADING", val })
     }
 }
 

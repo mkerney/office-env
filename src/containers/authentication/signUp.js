@@ -5,7 +5,7 @@ import { signUp } from '../../api/authentication';
 const mapStateToProps = state => {
     return {
         firstName: state.signUpForm.firstName,
-        middleName: state.signUpForm.middleName,
+        email: state.signUpForm.email,
         lastName: state.signUpForm.lastName,
         password: state.signUpForm.password,
         confirmPassword: state.signUpForm.confirmPassword,
@@ -20,7 +20,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         setFirstName: value => dispatch({ type: "SET_SIGNUP_FIRSTNAME", val: value }),
-        setMiddleName: value => dispatch({ type: "SET_SIGNUP_MIDDLENAME", val: value }),
+        setEmail: value => dispatch({ type: "SET_SIGNUP_EMAIL", val: value }),
         setLastName: value => dispatch({ type: "SET_SIGNUP_LASTNAME", val: value }),
         setPassword: value => dispatch({ type: "SET_SIGNUP_PASSWORD", val: value }),
         setConfirmPassword: value => dispatch({ type: "SET_SIGNUP_CONFIRM_PASSWORD", val: value }),
@@ -31,12 +31,13 @@ const mapDispatchToProps = dispatch => {
                 const newStates = getStates().signUpForm
                 if(newStates.isValidate){
                     const signInResponse = await signUp({
-                        firstName: newStates.firstName.value,
-                        middleName: newStates.lastName.value,
-                        lastName: newStates.lastName.value,
+                        name: newStates.firstName.value + ' ' + newStates.lastName.value,
+                        email: newStates.email.value,
                         password: newStates.password.value,
-                        confirmPassword: newStates.confirmPassword.value
                     })
+                    if (signInResponse.data.success) {
+                        dispatch({ type: "SUCCESS_SIGNUP" })
+                    }
                 }
             })
         },

@@ -4,7 +4,11 @@ const signUpForm = {
         showError: false,
         error: ''
     },
-    middleName: '',
+    email: {
+        value: '',
+        showError: false,
+        error: ''
+    },
     lastName: {
         value: '',
         showError: false,

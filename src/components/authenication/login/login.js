@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { Form, FormGroup, Label, Input, Button } from 'reactstrap';
 import CheckIcon from '../../../assets/images/Check.svg';
 
-export default class Login extends Component {
+class Login extends Component {
     constructor(props){
         super(props)
         this.setUsername = this.setUsername.bind(this)
@@ -33,8 +33,8 @@ export default class Login extends Component {
                 } id="signInForm" noValidate >
                     <h4 className="text-center">Sign In</h4>
                     <FormGroup>
-                        <Label className="form-label-theme" for="signInEmail">User ID<span class="field-mandatory"> *</span></Label>
-                        <Input className="form-input-theme" type="text" name="signInEmail" id="signInEmail" placeholder="Enter User ID" 
+                        <Label className="form-label-theme" for="signInEmail">Email<span class="field-mandatory"> *</span></Label>
+                        <Input className="form-input-theme" type="text" name="signInEmail" id="signInEmail" placeholder="Enter Email" 
                             onChange={this.setUsername}
                         />
                         {this.props.email.showError ? <span className="error-input-msg">{this.props.email.error}</span> : null}              
@@ -59,3 +59,6 @@ export default class Login extends Component {
         )
     }
 }
+
+
+export default withRouter(Login)

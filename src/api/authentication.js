@@ -18,7 +18,7 @@ export function signIn (data){
 }
 
 export function logoutUser() {
-    return axiosInstance.post('/logout')
+    return axiosInstance.put('/logout')
 }
 
 export function uniqueEmailCheck(data) {

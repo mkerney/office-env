@@ -22,9 +22,12 @@ const signUpReducer = (state = initialState, actions) => {
             }
         }
 
-        case 'SET_SIGNUP_MIDDLENAME': return {
+        case 'SET_SIGNUP_EMAIL': return {
             ...state,
-            middleName: actions.val
+            email: {
+                ...state.email,
+                value: actions.val
+            }
         }
 
         case 'SET_SIGNUP_LASTNAME': return {
@@ -64,6 +67,9 @@ const signUpReducer = (state = initialState, actions) => {
 
         return {
             ...state,
+            email: {
+                ...validateEmail(state.email)
+            },
             firstName: {
                 ...validateName(state.firstName)
             },
@@ -126,8 +132,12 @@ const signUpReducer = (state = initialState, actions) => {
             ...state,
             isValidate: false,
         }
+
+        default:
+            return {
+                ...state
+            }
     }
-    return state
 }
 
 export default signUpReducer
