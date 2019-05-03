@@ -5,7 +5,7 @@ const signUpApiPath = '/sign-up';
 let loginApiPath = '/sign-in'
 
 
-export function SignUp (data){
+export function signUp (data){
     return axiosInstance.post(signUpApiPath, data);
 }
 

@@ -2,7 +2,6 @@ import submitForm from "../../validations/submitForm";
 import initialState from "../../states/authentication/signIn";
 import validateEmail from "../../validations/email";
 import validateRequired from "../../validations/requiredValidation";
-import submitSignInForm from "../../actions/signIn/submitSignInForm";
 import validatePassword from "../../validations/password";
 
 
@@ -58,7 +57,6 @@ const signInReducer = (state = initialState, actions) => {
         };
 
         case 'SUBMIT_SIGNIN':
-        submitSignInForm(state);
         return state;
 
         case 'RESET_VALIDATION_SIGN_IN_FORM':

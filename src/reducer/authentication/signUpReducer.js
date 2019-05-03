@@ -5,9 +5,6 @@ import validatePassword from "../../validations/password";
 import validateConfirmPassword from "../../validations/confirmPassword";
 import validateTnC from "../../validations/TnC";
 import submitForm from "../../validations/submitForm";
-import submitSignUpForm from "../../actions/signUp/submitSignUpForm";
-import updateFBDetails from "../../actions/signUp/addEmailToFBDetails";
-import uniqueEmailCheck from "../../actions/signUp/uniqueEmailCheck";
 
 
 const signUpReducer = (state = initialState, actions) => {
@@ -17,18 +14,23 @@ const signUpReducer = (state = initialState, actions) => {
             ...initialState
         }
 
-        case 'SET_SIGNUP_NAME': return {
+        case 'SET_SIGNUP_FIRSTNAME': return {
             ...state,
-            name: {
-                ...state.name,
+            firstName: {
+                ...state.firstName,
                 value: actions.val
             }
         }
 
-        case 'SET_SIGNUP_EMAIL': return {
+        case 'SET_SIGNUP_MIDDLENAME': return {
             ...state,
-            email: {
-                ...state.email,
+            middleName: actions.val
+        }
+
+        case 'SET_SIGNUP_LASTNAME': return {
+            ...state,
+            lastName: {
+                ...state.lastName,
                 value: actions.val
             }
         }
@@ -62,11 +64,11 @@ const signUpReducer = (state = initialState, actions) => {
 
         return {
             ...state,
-            email: {
-                ...validateEmail(state.email)
+            firstName: {
+                ...validateName(state.firstName)
             },
-            name : {
-                ...validateName(state.name)
+            lastName : {
+                ...validateName(state.lastName)
             },
             password : {
                 ...validatePassword(state.password)
@@ -90,7 +92,6 @@ const signUpReducer = (state = initialState, actions) => {
 
 
         case 'SUBMIT_SIGNUP' :
-        submitSignUpForm(state);
         return {
             ...state
         }
@@ -109,7 +110,6 @@ const signUpReducer = (state = initialState, actions) => {
 
         case 'UNIQUE_EMAIL_CHECK':
         if (state.isValidate) {
-            uniqueEmailCheck(state.email.value);
             return state; 
         } else {
             return state;

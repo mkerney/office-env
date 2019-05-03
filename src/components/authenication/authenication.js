@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import Signin from './login/login';
-import Signup from './signup/signup';
+import Signin from '../../containers/authentication/signIn';
+import Signup from '../../containers/authentication/signUp';
 import MainLogo from '../../assets/images/main-logo.png';
 
 export default class authenication extends Component {

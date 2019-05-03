@@ -1,11 +1,12 @@
 import axios from "axios";
 import store from "../store";
 import { Cookies } from "react-cookie";
+require('dotenv').config()
 
 const cookie = new Cookies()
 
 const axiosInstance = axios.create({
-    baseURL : process.env.SERVER_URL
+    baseURL : 'http://localhost:3002/api'
     ,withCredentials : true
 })
 
